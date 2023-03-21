@@ -1,4 +1,5 @@
-#This program allows the user to create and maintain a simple database of students. Users have the option to add and remove students, and also list the current database.
+#This program allows the user to create and maintain a simple database of students. Users have the option to add and remove students, assign grades to
+#students in the database, and also list the current database.
 #The data structure being used to acheive this is the 'list' structure.
 
 def inputStudentName():
@@ -76,21 +77,22 @@ def addGrade():
         print("Erorr, student " + studentToGrade + " does not exist.")
 
 def getGPA(gradeList):
-    totalMarks = 0
+    #This method will find the GPA of a given list of grades, by tallying up the total of the grade points and dividing by the number of grades assigned to the list.
+    gradePoints = 0
     totalGrades = 0
     if len(gradeList) == 0:
         return None
     for grade in gradeList:
         totalGrades += 1
         if grade == 'A':
-            totalMarks += 4.0
+            gradePoints += 4.0
         elif grade == 'B':
-            totalMarks += 3.0
+            gradePoints += 3.0
         elif grade == 'C':
-            totalMarks += 2.0
+            gradePoints += 2.0
         elif grade == 'D':
-            totalMarks += 1.0
-    return round(totalMarks / totalGrades, 2)
+            gradePoints += 1.0
+    return round(gradePoints / totalGrades, 2)
 
 def sortListAlphabetically(listToSort):
     #This method will loop through the strings in a list and return a new list with the strings sorted in alphabetical order.
@@ -136,7 +138,7 @@ def sortListAlphabetically(listToSort):
 
 def listDatabase():
     #This method will loop through the student list and print each entry on a seperate line, if the list is empty it will print a simple error message.
-    #It will also compare each student name to the first element of each student grade list to retreive the relevant grade list and print out the student's grades.
+    #It will also compare each student name to the first element of each student grade list to retreive the relevant grade list and print out the student's grades and their GPA.
     if len(studentDatabase) == 0:
         print("Database empty.")
         return
