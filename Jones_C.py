@@ -34,7 +34,7 @@ def addStudent():
 
         print("Student " + studentToAdd +" added.")
     else:
-        print("Student already exists.")
+        print("Student " + studentToAdd + " already exists.")
 
 def removeStudent():
     #This method will retreive the string from the inputStudentName method and remove it from a list provided the list contains an identical string.
@@ -65,7 +65,8 @@ def addGrade():
     
     studentToGrade = inputStudentName()
     studentExists = False
-
+    
+    #Looping through each grade list and comparing index 0 to the student's name to ensure the grades list the grade is added to belongs the the correct student.
     for list in gradeLists:
         if list[0] == studentToGrade:
             gradeToAdd = inputGrade()
@@ -74,7 +75,7 @@ def addGrade():
             studentExists = True
 
     if studentExists == False:
-        print("Erorr, student " + studentToGrade + " does not exist.")
+        print("Error, student " + studentToGrade + " does not exist.")
 
 def getGPA(gradeList):
     #This method will find the GPA of a given list of grades, by tallying up the total of the grade points and dividing by the number of grades assigned to the list.
@@ -112,14 +113,14 @@ def sortListAlphabetically(listToSort):
                 alphabeticalList.insert(index, entry)
                 entryInserted = True
             #If the current entry's first letter comes before the currently indexed alphabetical entry, the current entry is inserted before the currently indexed alphabetical entry in the list.
-            elif surname[0] < alphabeticalList[index][0]:
+            elif surname[0] < alphabeticalList[index][alphabeticalList[index].find(' ')+1]:
                 alphabeticalList.insert(index, entry)
                 entryInserted = True
             #If the first letter of the current entry matches the currently indexed alphabetical entry, then the characterIndex variable is used to index through the string itself to ensure the list is completely alphebatized.
-            elif surname[0] == alphabeticalList[index][0]:
-                if surname[characterIndex] == alphabeticalList[index][characterIndex]:
+            elif surname[0] == alphabeticalList[index][alphabeticalList[index].find(' ')+1]:
+                if surname[characterIndex] == alphabeticalList[index][alphabeticalList[index].find(' ')+1 + characterIndex]:
                     characterIndex += 1
-                    if characterIndex >= len(surname):
+                    if characterIndex >= len(surname) or alphabeticalList[index].find(' ')+1 + characterIndex > len(alphabeticalList[index]) :
                         if(len(surname) > len(alphabeticalList[index])):
                            alphabeticalList.insert(index+1, entry) 
                         else:
@@ -143,9 +144,10 @@ def listDatabase():
         print("Database empty.")
         return
     
+    #Looping through an alphabetically sorted version of the student list to print the students in alphabetical order.
     for entry in sortListAlphabetically(studentDatabase):
-
         stringToPrint = entry
+        #Finding relevant grade list to print and run through the get gpa method to also return the student's gpa aswell as their grades.
         for gradeList in gradeLists:
             if entry == gradeList[0]:
                 stringToPrint = stringToPrint + " - " + str(gradeList[1:len(gradeList)]) + "; GPA: " + str(getGPA(gradeList[1:len(gradeList)]))

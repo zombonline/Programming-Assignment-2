@@ -18,7 +18,7 @@ def addStudent():
         studentDatabase.append(studentToAdd)
         print("Student " + studentToAdd +" added.")
     else:
-        print("Student already exists.")
+        print("Student " + studentToAdd + " already exists.")
 
 def removeStudent():
     #This method will retreive the string from the inputStudentName method and remove it from a list provided the list contains an identical string.
@@ -30,7 +30,7 @@ def removeStudent():
         studentDatabase.remove(studentToRemove)
         print("Student " + studentToRemove + " removed.")
     else:
-        print("Student doesn't exist.")
+        print("Student " + studentToRemove + " doesn't exist.")
 
 def listDatabase():
     #This method will loop through a list and print each entry on a seperate line, if the list is empty it will print a simple error message.

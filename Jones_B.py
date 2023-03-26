@@ -33,7 +33,7 @@ def addStudent():
 
         print("Student " + studentToAdd +" added.")
     else:
-        print("Student already exists.")
+        print("Student " + studentToAdd + " already exists.")
 
 def removeStudent():
     #This method will retreive the string from the inputStudentName method and remove it from a list provided the list contains an identical string.
@@ -53,7 +53,7 @@ def removeStudent():
 
         print("Student " + studentToRemove + " removed.")
     else:
-        print("Student doesn't exist.")
+        print("Student " + studentToRemove + " doesn't exist.")
 
 def addGrade():
     #This method will ask for two strings, the student to grade and the grade itself. It will then search through the list containing student grade lists by checking the first entry in each of these lists to match the student name.
@@ -65,6 +65,7 @@ def addGrade():
     studentToGrade = inputStudentName()
     studentExists = False
 
+    #Looping through each grade list and comparing index 0 to the student's name to ensure the grades list the grade is added to belongs the the correct student.
     for list in gradeLists:
         if list[0] == studentToGrade:
             gradeToAdd = inputGrade()
