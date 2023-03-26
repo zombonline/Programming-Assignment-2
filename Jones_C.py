@@ -108,25 +108,29 @@ def sortListAlphabetically(listToSort):
         entryInserted = False
 
         while entryInserted == False:
+            #if there are entries in the alphabetical list to compare to, a variable is create to slice the surname out.
+            if index < len(alphabeticalList):
+                indexedEntrySurname = alphabeticalList[index][alphabeticalList[index].find(' ')+ 1: len(alphabeticalList[index])]
             #If the index has reached the end of the list, the entry is added to the end of the list.
             if(index >= len(alphabeticalList)):
                 alphabeticalList.insert(index, entry)
                 entryInserted = True
             #If the current entry's first letter comes before the currently indexed alphabetical entry, the current entry is inserted before the currently indexed alphabetical entry in the list.
-            elif surname[0] < alphabeticalList[index][alphabeticalList[index].find(' ')+1]:
+            elif surname[0] < indexedEntrySurname[0]:
                 alphabeticalList.insert(index, entry)
                 entryInserted = True
             #If the first letter of the current entry matches the currently indexed alphabetical entry, then the characterIndex variable is used to index through the string itself to ensure the list is completely alphebatized.
-            elif surname[0] == alphabeticalList[index][alphabeticalList[index].find(' ')+1]:
-                if surname[characterIndex] == alphabeticalList[index][alphabeticalList[index].find(' ')+1 + characterIndex]:
+            elif surname[0] == indexedEntrySurname[0]:
+                if surname[characterIndex] == indexedEntrySurname[characterIndex]:
                     characterIndex += 1
-                    if characterIndex >= len(surname) or alphabeticalList[index].find(' ')+1 + characterIndex > len(alphabeticalList[index]) :
-                        if(len(surname) > len(alphabeticalList[index])):
+                    #If the character index variable has reached the end of either of the entries, the indexed entry is placed based on the length, shorter first.
+                    if characterIndex >= len(surname) or characterIndex >= len(indexedEntrySurname):
+                        if(len(surname) > len(indexedEntrySurname)):
                            alphabeticalList.insert(index+1, entry) 
                         else:
                             alphabeticalList.insert(index, entry)
                         entryInserted = True
-                elif surname[characterIndex] < alphabeticalList[index][characterIndex]:
+                elif surname[characterIndex] < indexedEntrySurname[characterIndex]:
                     alphabeticalList.insert(index, entry)
                     entryInserted = True
                 else:
