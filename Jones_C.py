@@ -96,7 +96,8 @@ def getGPA(gradeList):
     #if the grade list passed through to this method is empty, return None.
     if len(gradeList) == 0: 
         return None
-    for grade in gradeList: #Add the numerical value of each grade found in the grade ;ist
+    #Add the numerical value of each grade found in the grade list
+    for grade in gradeList:
         totalGrades += 1
         if grade == 'A':
             gradePoints += 4.0
@@ -131,7 +132,7 @@ def sortListAlphabetically(listToSort):
             if(index >= len(alphabeticalList)):
                 alphabeticalList.insert(index, entry)
                 entryInserted = True
-            #If the current entry's first letter comes before the sorted entry, the current entry is inserted before the sorted entry in the list.
+            #If the current entry's first letter comes before the sorted entry's first letter, the current entry is inserted BEFORE the sorted entry in the list.
             elif surname[0] < sortedEntrySurname[0]:
                 alphabeticalList.insert(index, entry)
                 entryInserted = True
@@ -139,16 +140,16 @@ def sortListAlphabetically(listToSort):
             elif surname[0] == sortedEntrySurname[0]:
                 if surname[characterIndex] == sortedEntrySurname[characterIndex]:
                     characterIndex += 1
-                    #If the character index variable has reached the end of either of the entries, the indexed entry is placed based on the length, shorter first.
+                    #If the character index variable has reached the end of either of the entries, the indexed entry is placed based on the length, shorter BEFORE.
                     if characterIndex >= len(surname) or characterIndex >= len(sortedEntrySurname):
-                        #if current entry is longer than the sorted entry, place it after.
+                        #if current entry is longer than the sorted entry, place it AFTER.
                         if(len(surname) > len(sortedEntrySurname)): 
                            alphabeticalList.insert(index+1, entry) 
-                        #If the current entry is the same length or shorter than the sorted entry, place it before.
+                        #If the current entry is the same length or shorter than the sorted entry, place it BEFORE.
                         else: 
                             alphabeticalList.insert(index, entry)
                         entryInserted = True
-                #If the currently indexed char of the current entry comes before the currently indexed char of the sorted entry, place the curren entry before
+                #If the currently indexed char of the current entry comes BEFORE the currently indexed char of the sorted entry, place the curren entry BEFORE
                 elif surname[characterIndex] < sortedEntrySurname[characterIndex]: 
                     alphabeticalList.insert(index, entry)
                     entryInserted = True
@@ -164,6 +165,8 @@ def sortListAlphabetically(listToSort):
 def listDatabase():
     #This method will loop through the student list and print each entry on a seperate line, if the list is empty it will print a simple error message.
     #It will also compare each student name to the first element of each student grade list to retreive the relevant grade list and print out the student's grades and their GPA.
+    
+    #Check if student database is empty, print an error message and return to menu if so.
     if len(studentDatabase) == 0:
         print("Database empty.")
         return

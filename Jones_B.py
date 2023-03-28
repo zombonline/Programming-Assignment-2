@@ -89,9 +89,12 @@ def addGrade():
 
 def listDatabase():
     #This method will loop through a list and print each entry on a seperate line, if the list is empty it will print a simple error message.
+    
+    #Check if student database is empty, print an error message and return to menu if so.
     if len(studentDatabase) == 0:
         print("Database empty.")
         return
+    #If database is not empty, loop through and print each student's name.
     for entry in studentDatabase:
         print(entry)
     
