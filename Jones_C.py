@@ -109,7 +109,7 @@ def getGPA(gradeList):
             gradePoints += 1.0
     
     #Divide the numerical total by the amount of grades and round it to 2dp, return this value
-    return round(gradePoints / totalGrades, 2)
+    return str(f'{round(gradePoints / totalGrades, 2):.2f}')
 
 def sortListAlphabetically(listToSort):
     #This method will loop through the strings in a list and return a new list with the strings sorted in alphabetical order.
@@ -177,7 +177,7 @@ def listDatabase():
         #Finding relevant grade list to print and run through the get gpa method to also return the student's gpa aswell as their grades.
         for gradeList in gradeLists:
             if entry == gradeList[0]:
-                stringToPrint = stringToPrint + " - " + str(gradeList[1:len(gradeList)]) + "; GPA: " + str(f'{getGPA(gradeList[1:len(gradeList)]):.2f}') #concatenate student's grade list and gpa to string
+                stringToPrint = stringToPrint + " - " + str(gradeList[1:len(gradeList)]) + "; GPA: " + str(getGPA(gradeList[1:len(gradeList)])) #concatenate student's grade list and gpa to string
         print(stringToPrint) #Print concatenated string
 
     
