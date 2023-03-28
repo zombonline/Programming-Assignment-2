@@ -1,6 +1,12 @@
 #This program allows the user to create and maintain a simple database of students. Users have the option to add and remove students, assign grades to
 #students in the database, and also list the current database.
 #The data structure being used to acheive this is the 'list' structure.
+#
+#The main loop will ask the user to enter a string to pick from the available options.
+#If the user picks a valid option, they will run through the method until it is complete after which they will 
+#be returned to the main loop to repeat the process.
+#Should the user enter an invalid string, they will simply be prompted for the string again.
+#Should the user pick the 'Exit' option, the main loop will be terminated, a goodbye messgae printed and the program will end.
 
 def inputStudentName():
     #This method will prompt the user to enter a student name containing atleast 3 characters with one of them being a space and will only return the string once the criteria is met.
