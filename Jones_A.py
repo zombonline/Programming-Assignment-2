@@ -27,13 +27,19 @@ def addStudent():
 
 def removeStudent():
     #This method will retreive the string from the inputStudentName method and remove it from a list provided the list contains an identical string.
+
+    #Check database contains at least 1 student, print an error message and return to menu if it does not.
     if len(studentDatabase) == 0:
         print("Database empty.")
         return
+    
     studentToRemove = inputStudentName()
+
+    #Check student exists inside student list, remove the student string if they do.
     if studentToRemove in studentDatabase:
         studentDatabase.remove(studentToRemove)
         print("Student " + studentToRemove + " removed.")
+    #If student does not exist inside student list, print and error message and return to menu.
     else:
         print("Student " + studentToRemove + " doesn't exist.")
 
@@ -57,9 +63,10 @@ X - Exit
 
 """)
     while programRunning:
-        action = input("Choose A, R, L, or G ('X' for exit): ")
+        action = input("Choose A, R, L, or G ('X' for exit): ") #Get user input
         print('')
-    
+
+        #Compare user's input with available options, if none match, loop will run again asking the user for another input.
         if action == 'A':
             addStudent()
             print('')
@@ -73,5 +80,6 @@ X - Exit
             print("Thank you - Goodbye.")
             programRunning = False
         
-studentDatabase = []
+studentDatabase = [] #List containg all student names within database.
+
 main()

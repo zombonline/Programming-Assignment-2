@@ -44,10 +44,14 @@ def removeStudent():
     #This method will retreive the string from the inputStudentName method and remove it from a list provided the list contains an identical string.
     #It will also search for the grades list that is matched to the student the user wishes to remove, to ensure their grades are removed from the list containg the grades lists.
 
+    #Check database contains at least 1 student, print an error message and return to menu if it does not.
     if len(studentDatabase) == 0:
         print("Database empty.")
         return
+    
     studentToRemove = inputStudentName()
+    
+    #Check student exists inside student list, remove the student string and grade list if they do.
     if studentToRemove in studentDatabase:
         studentDatabase.remove(studentToRemove)
         
@@ -57,6 +61,7 @@ def removeStudent():
                 gradeLists.remove(list)
 
         print("Student " + studentToRemove + " removed.")
+    #If student does not exist inside student list, print and error message and return to menu.
     else:
         print("Student " + studentToRemove + " doesn't exist.")
 
@@ -68,16 +73,17 @@ def addGrade():
         return
     
     studentToGrade = inputStudentName()
-    studentExists = False
+    studentExists = False #Initialise flag variable
 
-    #Looping through each grade list and comparing index 0 to the student's name to ensure the grades list the grade is added to belongs the the correct student.
+    #Looping through each grade list and comparing index 0 to the student's name to ensure the grades list the grade is added to belongs the the correct student. Use flag variable to confirm student grade list exists.
     for list in gradeLists:
         if list[0] == studentToGrade:
             gradeToAdd = inputGrade()
             list.append(gradeToAdd)
             print("Grade added to " + studentToGrade + "'s record.")
             studentExists = True
-            
+
+    #Check the flag variable was raised, if it was not, print and error message informing the user, the student does not exist.
     if studentExists == False:
         print("Erorr, student " + studentToGrade + " does not exist.")
 
@@ -101,10 +107,11 @@ X - Exit
 
 """)
     while programRunning:
-        action = input("Choose A, R, L, or G ('X' for exit): ")
+        action = input("Choose A, R, L, or G ('X' for exit): ") #Get user input
         print('')
-    
-        if action == 'A':
+        
+        #Compare user's input with available options, if none match, loop will run again asking the user for another input.
+        if action == 'A': 
             addStudent()
             print('')
         elif action == 'R':
@@ -120,7 +127,7 @@ X - Exit
             print("Thank you - Goodbye.")
             programRunning = False
         
-studentDatabase = []
-gradeLists = []
+studentDatabase = [] #List containg all student names within database.
+gradeLists = [] #List containing multiple lists, each assigned to a student, these will store the student's grades. The first element of each will be the student's names to allow the program to retreive the correct list for each student.
 
 main()
