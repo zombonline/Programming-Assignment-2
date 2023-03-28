@@ -50,6 +50,7 @@ def listDatabase():
     if len(studentDatabase) == 0:
         print("Database empty.")
         return
+    #If database is not empty, loop through and print each student's name.
     for entry in studentDatabase:
         print(entry)
 
@@ -59,13 +60,12 @@ def main():
 Please choose from the following options.
 A - Add student
 R - Remove student
-G - add Grade
 L - List database
 X - Exit
 
 """)
     while programRunning:
-        action = input("Choose A, R, L, or G ('X' for exit): ") #Get user input
+        action = input("Choose A, R, or L ('X' for exit): ") #Get user input
         print('')
 
         #Compare user's input with available options, if none match, loop will run again asking the user for another input.

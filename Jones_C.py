@@ -177,7 +177,7 @@ def listDatabase():
         #Finding relevant grade list to print and run through the get gpa method to also return the student's gpa aswell as their grades.
         for gradeList in gradeLists:
             if entry == gradeList[0]:
-                stringToPrint = stringToPrint + " - " + str(gradeList[1:len(gradeList)]) + "; GPA: " + str(getGPA(gradeList[1:len(gradeList)])) #concatenate student's grade list and gpa to string
+                stringToPrint = stringToPrint + " - " + str(gradeList[1:len(gradeList)]) + "; GPA: " + str(f'{getGPA(gradeList[1:len(gradeList)]):.2f}') #concatenate student's grade list and gpa to string
         print(stringToPrint) #Print concatenated string
 
     
@@ -187,7 +187,7 @@ def main():
 Please choose from the following options.
 A - Add student
 R - Remove student
-G - add Grade
+G - Add Grade
 L - List database
 X - Exit
 

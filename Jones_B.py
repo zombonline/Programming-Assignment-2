@@ -104,7 +104,7 @@ def main():
 Please choose from the following options.
 A - Add student
 R - Remove student
-G - add Grade
+G - Add Grade
 L - List database
 X - Exit
 
