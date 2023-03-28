@@ -87,9 +87,11 @@ def getGPA(gradeList):
     #This method will find the GPA of a given list of grades, by tallying up the total of the grade points and dividing by the number of grades assigned to the list.
     gradePoints = 0
     totalGrades = 0
-    if len(gradeList) == 0:
+
+    #if the grade list passed through to this method is empty, return None.
+    if len(gradeList) == 0: 
         return None
-    for grade in gradeList:
+    for grade in gradeList: #Add the numerical value of each grade found in the grade ;ist
         totalGrades += 1
         if grade == 'A':
             gradePoints += 4.0
@@ -99,6 +101,8 @@ def getGPA(gradeList):
             gradePoints += 2.0
         elif grade == 'D':
             gradePoints += 1.0
+    
+    #Divide the numerical total by the amount of grades and round it to 2dp, return this value
     return round(gradePoints / totalGrades, 2)
 
 def sortListAlphabetically(listToSort):
@@ -131,12 +135,12 @@ def sortListAlphabetically(listToSort):
                     characterIndex += 1
                     #If the character index variable has reached the end of either of the entries, the indexed entry is placed based on the length, shorter first.
                     if characterIndex >= len(surname) or characterIndex >= len(indexedEntrySurname):
-                        if(len(surname) > len(indexedEntrySurname)):
+                        if(len(surname) > len(indexedEntrySurname)): #if current entry is longer than the sorted entry, place it after.
                            alphabeticalList.insert(index+1, entry) 
-                        else:
+                        else: #if the current entry is the same length or shorter than the sorted entry, place it before.
                             alphabeticalList.insert(index, entry)
                         entryInserted = True
-                elif surname[characterIndex] < indexedEntrySurname[characterIndex]:
+                elif surname[characterIndex] < indexedEntrySurname[characterIndex]: #if the currently indexed char of the current entry comes before the currently indexed char of the sorted entry, place the curren entry before
                     alphabeticalList.insert(index, entry)
                     entryInserted = True
                 else:
